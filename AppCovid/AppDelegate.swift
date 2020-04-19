@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ApiAI
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let configuration = AIDefaultConfiguration()
+        configuration.clientAccessToken = "e50a50d58bd44cc2b16fe2f0f0c36b7c"
+        
+        let apiai = ApiAI.shared()
+        apiai?.configuration = configuration
+        
+//        UIApplication.shared.statusBarStyle = .lightContent
+        
         return true
     }
 
