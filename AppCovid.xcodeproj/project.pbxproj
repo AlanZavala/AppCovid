@@ -16,6 +16,12 @@
 		389ABE81244CFB1500E26B0D /* DiagnosticoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABE80244CFB1500E26B0D /* DiagnosticoViewController.swift */; };
 		389ABE83244CFC6300E26B0D /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABE82244CFC6300E26B0D /* SpeechManager.swift */; };
 		9276E1BFAEA838B301ACA3BE /* Pods_AppCovid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32779FFA6BD12C12553F66E9 /* Pods_AppCovid.framework */; };
+		EC4273042451024100FB8B94 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4273032451024100FB8B94 /* MainController.swift */; };
+		EC42730624510AE800FB8B94 /* InicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730524510AE800FB8B94 /* InicioViewController.swift */; };
+		EC42730824510DF600FB8B94 /* SistemaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730724510DF600FB8B94 /* SistemaViewController.swift */; };
+		EC42730A24510E0300FB8B94 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730924510E0300FB8B94 /* PerfilViewController.swift */; };
+		EC42730C24510E1700FB8B94 /* DiagnósticoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730B24510E1700FB8B94 /* DiagnósticoViewController.swift */; };
+		EC42730E2451219000FB8B94 /* Diagnostico.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730D2451219000FB8B94 /* Diagnostico.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +37,12 @@
 		3826F3F724493D5D0086DA30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		389ABE80244CFB1500E26B0D /* DiagnosticoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticoViewController.swift; sourceTree = "<group>"; };
 		389ABE82244CFC6300E26B0D /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
+		EC4273032451024100FB8B94 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		EC42730524510AE800FB8B94 /* InicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioViewController.swift; sourceTree = "<group>"; };
+		EC42730724510DF600FB8B94 /* SistemaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SistemaViewController.swift; sourceTree = "<group>"; };
+		EC42730924510E0300FB8B94 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
+		EC42730B24510E1700FB8B94 /* DiagnósticoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiagnósticoViewController.swift"; sourceTree = "<group>"; };
+		EC42730D2451219000FB8B94 /* Diagnostico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnostico.swift; sourceTree = "<group>"; };
 		F316497379FFA4726E377118 /* Pods-AppCovid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppCovid.debug.xcconfig"; path = "Target Support Files/Pods-AppCovid/Pods-AppCovid.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +92,12 @@
 				3826F3ED24493D5B0086DA30 /* ViewController.swift */,
 				389ABE82244CFC6300E26B0D /* SpeechManager.swift */,
 				3826F3EF24493D5B0086DA30 /* Main.storyboard */,
+				EC42730D2451219000FB8B94 /* Diagnostico.swift */,
+				EC42730724510DF600FB8B94 /* SistemaViewController.swift */,
+				EC42730924510E0300FB8B94 /* PerfilViewController.swift */,
+				EC42730B24510E1700FB8B94 /* DiagnósticoViewController.swift */,
+				EC42730524510AE800FB8B94 /* InicioViewController.swift */,
+				EC4273032451024100FB8B94 /* MainController.swift */,
 				389ABE80244CFB1500E26B0D /* DiagnosticoViewController.swift */,
 				3826F3F224493D5D0086DA30 /* Assets.xcassets */,
 				3826F3F424493D5D0086DA30 /* LaunchScreen.storyboard */,
@@ -214,9 +232,15 @@
 			files = (
 				3826F3EE24493D5B0086DA30 /* ViewController.swift in Sources */,
 				389ABE83244CFC6300E26B0D /* SpeechManager.swift in Sources */,
+				EC42730624510AE800FB8B94 /* InicioViewController.swift in Sources */,
+				EC42730A24510E0300FB8B94 /* PerfilViewController.swift in Sources */,
+				EC42730824510DF600FB8B94 /* SistemaViewController.swift in Sources */,
 				389ABE81244CFB1500E26B0D /* DiagnosticoViewController.swift in Sources */,
 				3826F3EA24493D5B0086DA30 /* AppDelegate.swift in Sources */,
+				EC4273042451024100FB8B94 /* MainController.swift in Sources */,
+				EC42730C24510E1700FB8B94 /* DiagnósticoViewController.swift in Sources */,
 				3826F3EC24493D5B0086DA30 /* SceneDelegate.swift in Sources */,
+				EC42730E2451219000FB8B94 /* Diagnostico.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +388,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8MG9F22H29;
 				INFOPLIST_FILE = AppCovid/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,6 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8MG9F22H29;
 				INFOPLIST_FILE = AppCovid/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
