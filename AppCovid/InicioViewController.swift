@@ -16,6 +16,10 @@ class InicioViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func updateInfo(unwindSegue : UIStoryboardSegue){
+        
+    }
+    
 
     /*
     // MARK: - Navigation

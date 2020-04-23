@@ -52,8 +52,10 @@ class Diagno_sticoViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "celdaDiagnóstico", for: indexPath)
-        cell.textLabel?.text = arregloDiagnosticos[indexPath.row].date.description
-        cell.detailTextLabel?.text = arregloDiagnosticos[indexPath.row].nombre
+        
+        cell.textLabel?.text = arregloDiagnosticos[indexPath.row].nombre
+        
+        cell.detailTextLabel?.text = arregloDiagnosticos[indexPath.row].date.description
         return cell
     }
     
