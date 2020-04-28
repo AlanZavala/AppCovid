@@ -16,6 +16,10 @@
 		389ABE81244CFB1500E26B0D /* DiagnosticoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABE80244CFB1500E26B0D /* DiagnosticoViewController.swift */; };
 		389ABE83244CFC6300E26B0D /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABE82244CFC6300E26B0D /* SpeechManager.swift */; };
 		9276E1BFAEA838B301ACA3BE /* Pods_AppCovid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32779FFA6BD12C12553F66E9 /* Pods_AppCovid.framework */; };
+		AEB12CF52457259C0060E51A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEB12CF42457259C0060E51A /* GoogleService-Info.plist */; };
+		AEBE9FBA2457941300388269 /* Tokens.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEBE9FB92457911300388269 /* Tokens.plist */; };
+		AEBE9FBE2457A27900388269 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBE9FBD2457A27900388269 /* RegistrationViewController.swift */; };
+		AEBE9FC22457BAA800388269 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBE9FC12457BAA800388269 /* UserToken.swift */; };
 		EC4273042451024100FB8B94 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4273032451024100FB8B94 /* MainController.swift */; };
 		EC42730624510AE800FB8B94 /* InicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730524510AE800FB8B94 /* InicioViewController.swift */; };
 		EC42730824510DF600FB8B94 /* SistemaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730724510DF600FB8B94 /* SistemaViewController.swift */; };
@@ -37,6 +41,10 @@
 		3826F3F724493D5D0086DA30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		389ABE80244CFB1500E26B0D /* DiagnosticoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticoViewController.swift; sourceTree = "<group>"; };
 		389ABE82244CFC6300E26B0D /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
+		AEB12CF42457259C0060E51A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AEBE9FB92457911300388269 /* Tokens.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Tokens.plist; path = ../Tokens.plist; sourceTree = "<group>"; };
+		AEBE9FBD2457A27900388269 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = SOURCE_ROOT; };
+		AEBE9FC12457BAA800388269 /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		EC4273032451024100FB8B94 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		EC42730524510AE800FB8B94 /* InicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioViewController.swift; sourceTree = "<group>"; };
 		EC42730724510DF600FB8B94 /* SistemaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SistemaViewController.swift; sourceTree = "<group>"; };
@@ -87,11 +95,13 @@
 		3826F3E824493D5B0086DA30 /* AppCovid */ = {
 			isa = PBXGroup;
 			children = (
+				AEBE9FBD2457A27900388269 /* RegistrationViewController.swift */,
 				3826F3E924493D5B0086DA30 /* AppDelegate.swift */,
 				3826F3EB24493D5B0086DA30 /* SceneDelegate.swift */,
 				3826F3ED24493D5B0086DA30 /* ViewController.swift */,
 				389ABE82244CFC6300E26B0D /* SpeechManager.swift */,
 				3826F3EF24493D5B0086DA30 /* Main.storyboard */,
+				AEBE9FC12457BAA800388269 /* UserToken.swift */,
 				EC42730D2451219000FB8B94 /* Diagnostico.swift */,
 				EC42730724510DF600FB8B94 /* SistemaViewController.swift */,
 				EC42730924510E0300FB8B94 /* PerfilViewController.swift */,
@@ -101,6 +111,8 @@
 				389ABE80244CFB1500E26B0D /* DiagnosticoViewController.swift */,
 				3826F3F224493D5D0086DA30 /* Assets.xcassets */,
 				3826F3F424493D5D0086DA30 /* LaunchScreen.storyboard */,
+				AEBE9FB92457911300388269 /* Tokens.plist */,
+				AEB12CF42457259C0060E51A /* GoogleService-Info.plist */,
 				3826F3F724493D5D0086DA30 /* Info.plist */,
 			);
 			path = AppCovid;
@@ -176,8 +188,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3826F3F624493D5D0086DA30 /* LaunchScreen.storyboard in Resources */,
+				AEB12CF52457259C0060E51A /* GoogleService-Info.plist in Resources */,
 				3826F3F324493D5D0086DA30 /* Assets.xcassets in Resources */,
 				3826F3F124493D5B0086DA30 /* Main.storyboard in Resources */,
+				AEBE9FBA2457941300388269 /* Tokens.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,11 +250,13 @@
 				EC42730A24510E0300FB8B94 /* PerfilViewController.swift in Sources */,
 				EC42730824510DF600FB8B94 /* SistemaViewController.swift in Sources */,
 				389ABE81244CFB1500E26B0D /* DiagnosticoViewController.swift in Sources */,
+				AEBE9FBE2457A27900388269 /* RegistrationViewController.swift in Sources */,
 				3826F3EA24493D5B0086DA30 /* AppDelegate.swift in Sources */,
 				EC4273042451024100FB8B94 /* MainController.swift in Sources */,
 				EC42730C24510E1700FB8B94 /* DiagnósticoViewController.swift in Sources */,
 				3826F3EC24493D5B0086DA30 /* SceneDelegate.swift in Sources */,
 				EC42730E2451219000FB8B94 /* Diagnostico.swift in Sources */,
+				AEBE9FC22457BAA800388269 /* UserToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

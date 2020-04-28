@@ -9,11 +9,10 @@
 import UIKit
 import ApiAI
 import AVFoundation
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let configuration = AIDefaultConfiguration()
@@ -23,7 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         apiai?.configuration = configuration
         
 //        UIApplication.shared.statusBarStyle = .lightContent
-        
+
+        FirebaseApp.configure()
+        let db = Firestore.firestore()
+
         return true
     }
 
