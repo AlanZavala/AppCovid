@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="arA-dy-Ekr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -31,7 +31,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLw-6a-FHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="833"/>
+            <point key="canvasLocation" x="1145" y="812"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="h6v-ri-68X">
@@ -44,7 +44,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="PVr-u3-dVk" kind="relationship" relationship="viewControllers" id="c2J-xB-RzM"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="y4n-T3-oza"/>
                         <segue destination="6kz-GT-i0m" kind="relationship" relationship="viewControllers" id="ULY-rq-YL7"/>
                         <segue destination="Fnm-4Q-8Ti" kind="relationship" relationship="viewControllers" id="XLS-zW-3iC"/>
                     </connections>
@@ -67,30 +66,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swz-5d-12I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="-747"/>
-        </scene>
-        <!--Cuestionario-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AppCovid" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Cuestionario" image="book.circle" catalog="system" id="wCt-gM-awc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-873" y="37"/>
+            <point key="canvasLocation" x="1145" y="-672"/>
         </scene>
         <!--Diagnostico View Controller-->
         <scene sceneID="Q2F-kb-vEC">
             <objects>
                 <viewController id="z4v-O6-8ni" customClass="DiagnosticoViewController" customModule="AppCovid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gwA-EC-dkC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="oB1-QA-3hy"/>
@@ -98,9 +81,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pst-ba-dL6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="1549"/>
+            <point key="canvasLocation" x="1145" y="1527"/>
         </scene>
-        <!--Item-->
+        <!--Usuario-->
         <scene sceneID="QZh-GX-o1W">
             <objects>
                 <viewController id="PVr-u3-dVk" customClass="Diagno_sticoViewController" customModule="AppCovid" customModuleProvider="target" sceneMemberID="viewController">
@@ -155,14 +138,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.72m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfV-cW-Udr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="---" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfV-cW-Udr">
                                 <rect key="frame" x="221" y="291" width="115" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="80kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmo-sz-x3a">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="---" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmo-sz-x3a">
                                 <rect key="frame" x="39" y="291" width="115" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -173,7 +156,7 @@
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="RzY-c9-xwb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="person.crop.circle.fill" catalog="system" id="HfP-O2-ZIm"/>
+                    <tabBarItem key="tabBarItem" title="Usuario" image="person.crop.circle.fill" catalog="system" id="HfP-O2-ZIm"/>
                     <navigationItem key="navigationItem" id="bmI-UP-8Ed"/>
                     <connections>
                         <outlet property="lblUsername" destination="gvH-i9-XAp" id="KeW-6h-1vt"/>
@@ -224,7 +207,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="book.circle" catalog="system" width="128" height="121"/>
         <image name="bubble.right.fill" catalog="system" width="128" height="110"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
         <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
