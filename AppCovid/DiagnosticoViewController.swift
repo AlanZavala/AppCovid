@@ -11,9 +11,15 @@ import JSQMessagesViewController
 import UIKit
 import Speech
 
+import FirebaseCore
+import FirebaseFirestore
+
 
 
 class DiagnosticoViewController: JSQMessagesViewController {
+    
+    var db: Firestore!
+    var dbUsuario: [String: Any] = [:]
     
     var messages = [JSQMessage]()
 //    las lazy var son para que tenga un valor hasta que se use por primera vez
@@ -28,6 +34,12 @@ class DiagnosticoViewController: JSQMessagesViewController {
     //MARK: Lifecycle Methods
     override func viewDidLoad()
     {
+        let settings = FirestoreSettings()
+       Firestore.firestore().settings = settings
+       // [END setup]
+       db = Firestore.firestore()
+        
+        
         super.viewDidLoad()
         self.senderId = "Id"
         self.senderDisplayName = "Alan"
@@ -86,6 +98,10 @@ class DiagnosticoViewController: JSQMessagesViewController {
             let response = response as! AIResponse
             if let textResponse = response.result.fulfillment.speech
             {
+                print("hola print")
+                print(textResponse)
+                self.uploadMessages(message: textResponse)
+                print("adios print")
                 SpeechManager.shared.speak(text: textResponse)
                 self.addMessage(withId: "BotId", name: "Bot", text: textResponse)
                 self.finishReceivingMessage()
@@ -151,6 +167,55 @@ class DiagnosticoViewController: JSQMessagesViewController {
         finishSendingMessage()
         performQuery(senderId: senderId, name: senderDisplayName, text: text!)
         
+    }
+    
+    
+    
+    // MARK: DB
+    func uploadMessages(message: String){
+        let tokens: [UserToken]
+        var storedID:String? = ""
+        do {
+            let data = try Data.init(contentsOf: dataFileURL())
+            tokens = try PropertyListDecoder().decode([UserToken].self, from: data)
+            storedID = tokens.first?.userID
+        } catch {
+            print("Error al cargar los datos del archivo")
+        }
+        db.collection("users").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if document.documentID == storedID {
+                        self.dbUsuario = document.data()
+                        
+                        var array = [String]()
+                        
+                        array = self.dbUsuario["messages"] as! [String]
+                        
+                        print("the array")
+                        print(array)
+                        
+                        array.append(message)
+                        
+                        self.db.collection("users").document(document.documentID).setData([ "messages": array ], merge: true)
+                        
+                    }
+                }
+                
+                
+            }
+        }
+    }
+    
+    
+    
+    func dataFileURL() -> URL {
+        let url = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let pathArchivo = url.appendingPathComponent("Tokens.plist")
+        
+        return pathArchivo
     }
 
 }

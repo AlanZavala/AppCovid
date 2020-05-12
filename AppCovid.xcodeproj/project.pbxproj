@@ -42,7 +42,7 @@
 		389ABE80244CFB1500E26B0D /* DiagnosticoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticoViewController.swift; sourceTree = "<group>"; };
 		389ABE82244CFC6300E26B0D /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
 		AE02C62C246A55E9005F4A73 /* DoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
-		AE0EC1EF2469FC6B0075CCD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = "Base.lproj/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AE0EC1EF2469FC6B0075CCD3 /* Base */ = {isa = PBXFileReference; explicitFileType = text.plist; name = Base; path = "Base.lproj/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEBE9FBD2457A27900388269 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = SOURCE_ROOT; };
 		AEBE9FC12457BAA800388269 /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		EC4273032451024100FB8B94 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -285,7 +285,6 @@
 				AE0EC1EF2469FC6B0075CCD3 /* Base */,
 			);
 			name = "GoogleService-Info.plist";
-			path = ../../../Downloads;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
