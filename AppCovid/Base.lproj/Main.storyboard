@@ -68,6 +68,47 @@
             </objects>
             <point key="canvasLocation" x="1145" y="-672"/>
         </scene>
+        <!--Doctor View Controller-->
+        <scene sceneID="ehx-Ii-P7y">
+            <objects>
+                <viewController id="SmP-ce-VUS" customClass="DoctorViewController" customModule="AppCovid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mVB-cc-Gzn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Doctor Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31g-E3-bi7">
+                                <rect key="frame" x="57" y="115" width="261" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOm-wX-tIw">
+                                <rect key="frame" x="52" y="483" width="270" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Diagnósticos"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rX-gu-5e7">
+                                <rect key="frame" x="52" y="361" width="270" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Pacientes"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="y6V-oR-BqP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hjW-65-2wM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="89n-bo-5fp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2052" y="-666.11694152923542"/>
+        </scene>
         <!--Diagnostico View Controller-->
         <scene sceneID="Q2F-kb-vEC">
             <objects>
@@ -161,6 +202,7 @@
                     <connections>
                         <outlet property="lblUsername" destination="gvH-i9-XAp" id="KeW-6h-1vt"/>
                         <segue destination="ep6-Cx-6Ms" kind="presentation" identifier="callRegistro" id="Vnr-cx-ZE5"/>
+                        <segue destination="SmP-ce-VUS" kind="show" identifier="doctorLogin" id="oZK-i7-2U6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vLa-92-fgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

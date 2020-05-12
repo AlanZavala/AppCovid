@@ -63,6 +63,11 @@ class Diagno_sticoViewController: UIViewController, UITableViewDelegate, UITable
                 for document in querySnapshot!.documents {
                     if document.documentID == storedID {
                         self.dbUsuario = document.data()
+                        
+                        if self.dbUsuario["admin"] as? Bool == true {
+                            self.performSegue(withIdentifier: "doctorLogin", sender: self)
+                        }
+                        
                         self.lblUsername.text = self.dbUsuario["nombre"] as? String
                     }
                 }
@@ -79,7 +84,8 @@ class Diagno_sticoViewController: UIViewController, UITableViewDelegate, UITable
         var ref: DocumentReference? = nil
         ref = db.collection("users").addDocument(data: [
             "nombre": newUsername,
-            "diagnosticos": []
+            "diagnosticos": [],
+            "admin": false
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -129,10 +135,10 @@ class Diagno_sticoViewController: UIViewController, UITableViewDelegate, UITable
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vistaRegistro = segue.destination as! RegistrationViewController
-        vistaRegistro.delegado = self
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "callRegistro" {
+            let vistaRegistro = segue.destination as! RegistrationViewController
+            vistaRegistro.delegado = self
+        }
     }
 
 }

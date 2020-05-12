@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIApplication.shared.statusBarStyle = .lightContent
 
         FirebaseApp.configure()
-        let db = Firestore.firestore()
 
         return true
     }
