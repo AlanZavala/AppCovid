@@ -16,7 +16,7 @@ import FirebaseFirestore
 
 
 
-class DiagnosticoViewController: JSQMessagesViewController {
+class FQViewController: JSQMessagesViewController {
     
     var db: Firestore!
     var dbUsuario: [String: Any] = [:]
@@ -61,10 +61,11 @@ class DiagnosticoViewController: JSQMessagesViewController {
     
     func populateWithWelcomeMessage()
     {
-        self.addMessage(withId: "BotId", name: "Bot", text: "Buen día, en este apartado puedes realizar un diagnóstico que te ayude a detectar si tienes síntomas e indicios de COVID-19")
+        self.addMessage(withId: "BotId", name: "Bot", text: "Qué tal soy un sistema inteligente que intentará aclarar tus dudas en relación con el coronavirus.")
         self.finishReceivingMessage()
-        self.addMessage(withId: "BotId", name: "Bot", text: "Para empezar el diagnóstico, escribe: comenzar")
+        self.addMessage(withId: "BotId", name: "Bot", text: "Me puedes preguntar sobre: \n ¿Qué es el coronavirus?\n¿Qué es el covid19?\n¿Qué es el COVID 19?\n¿Los síntomas?\n¿Como se propaga COVID 19?\n¿Se trasmite por el aire?\n¿Qué puedo hacer para prevenir la enfermedad?\nHazme tus preguntas de forma natural e intentare con mi limitada Inteligencia Artificial contestarte.")
         self.finishReceivingMessage()
+        
     }
     
 //    se agrega mensaje al array de mensajes y con esto a la colección de mensajes
@@ -117,18 +118,15 @@ class DiagnosticoViewController: JSQMessagesViewController {
         return messages.count
     }
     
-    //mensaje por parte del usuario
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     }
     
-    //mensaje por parte del sistema/chatbot
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleRed())
+        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
     }
-    
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item] // 1
@@ -139,7 +137,11 @@ class DiagnosticoViewController: JSQMessagesViewController {
         }
     }
     
-    //obtiene el mensaje, le pone formato y lo pone en la celda correspondiente
+    //removing avatars
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        return nil
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
@@ -154,7 +156,6 @@ class DiagnosticoViewController: JSQMessagesViewController {
         return cell
     }
     
-    //manda el mensaje el usuario
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
         addMessage(withId: senderId, name: senderDisplayName!, text: text!)
@@ -164,6 +165,8 @@ class DiagnosticoViewController: JSQMessagesViewController {
         performQuery(senderId: senderId, name: senderDisplayName, text: text!)
         
     }
+    
+    
     
     // MARK: DB
     func uploadMessages(message: String){

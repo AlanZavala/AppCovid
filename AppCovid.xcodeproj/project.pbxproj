@@ -13,11 +13,12 @@
 		3826F3F324493D5D0086DA30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3826F3F224493D5D0086DA30 /* Assets.xcassets */; };
 		3826F3F624493D5D0086DA30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3826F3F424493D5D0086DA30 /* LaunchScreen.storyboard */; };
 		389ABE83244CFC6300E26B0D /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABE82244CFC6300E26B0D /* SpeechManager.swift */; };
+		38CBE7F42471F3AA006B835B /* DiagnosticoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBE7F32471F3AA006B835B /* DiagnosticoViewController.swift */; };
 		9276E1BFAEA838B301ACA3BE /* Pods_AppCovid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32779FFA6BD12C12553F66E9 /* Pods_AppCovid.framework */; };
 		AE02C62D246A55E9005F4A73 /* DoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE02C62C246A55E9005F4A73 /* DoctorViewController.swift */; };
 		AE0EC1EE2469FC6B0075CCD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0EC1F02469FC6B0075CCD3 /* GoogleService-Info.plist */; };
 		AEA27A3B2468790200AAF114 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3826F3EF24493D5B0086DA30 /* Main.storyboard */; };
-		AEA27A3C2468798900AAF114 /* DiagnosticoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABE80244CFB1500E26B0D /* DiagnosticoViewController.swift */; };
+		AEA27A3C2468798900AAF114 /* FQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABE80244CFB1500E26B0D /* FQViewController.swift */; };
 		AEBE9FBE2457A27900388269 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBE9FBD2457A27900388269 /* RegistrationViewController.swift */; };
 		AEBE9FC22457BAA800388269 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBE9FC12457BAA800388269 /* UserToken.swift */; };
 		EC4273042451024100FB8B94 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4273032451024100FB8B94 /* MainController.swift */; };
@@ -39,8 +40,9 @@
 		3826F3F224493D5D0086DA30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3826F3F524493D5D0086DA30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3826F3F724493D5D0086DA30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		389ABE80244CFB1500E26B0D /* DiagnosticoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticoViewController.swift; sourceTree = "<group>"; };
+		389ABE80244CFB1500E26B0D /* FQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQViewController.swift; sourceTree = "<group>"; };
 		389ABE82244CFC6300E26B0D /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
+		38CBE7F32471F3AA006B835B /* DiagnosticoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticoViewController.swift; sourceTree = "<group>"; };
 		AE02C62C246A55E9005F4A73 /* DoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorViewController.swift; sourceTree = "<group>"; };
 		AE0EC1EF2469FC6B0075CCD3 /* Base */ = {isa = PBXFileReference; explicitFileType = text.plist; name = Base; path = "Base.lproj/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEBE9FBD2457A27900388269 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -101,6 +103,7 @@
 				3826F3ED24493D5B0086DA30 /* ViewController.swift */,
 				389ABE82244CFC6300E26B0D /* SpeechManager.swift */,
 				3826F3EF24493D5B0086DA30 /* Main.storyboard */,
+				38CBE7F32471F3AA006B835B /* DiagnosticoViewController.swift */,
 				AE02C62C246A55E9005F4A73 /* DoctorViewController.swift */,
 				AEBE9FC12457BAA800388269 /* UserToken.swift */,
 				EC42730D2451219000FB8B94 /* Diagnostico.swift */,
@@ -109,7 +112,7 @@
 				EC42730B24510E1700FB8B94 /* DiagnósticoViewController.swift */,
 				EC42730524510AE800FB8B94 /* InicioViewController.swift */,
 				EC4273032451024100FB8B94 /* MainController.swift */,
-				389ABE80244CFB1500E26B0D /* DiagnosticoViewController.swift */,
+				389ABE80244CFB1500E26B0D /* FQViewController.swift */,
 				3826F3F224493D5D0086DA30 /* Assets.xcassets */,
 				3826F3F424493D5D0086DA30 /* LaunchScreen.storyboard */,
 				AE0EC1F02469FC6B0075CCD3 /* GoogleService-Info.plist */,
@@ -244,8 +247,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3826F3EE24493D5B0086DA30 /* ViewController.swift in Sources */,
-				AEA27A3C2468798900AAF114 /* DiagnosticoViewController.swift in Sources */,
+				AEA27A3C2468798900AAF114 /* FQViewController.swift in Sources */,
 				389ABE83244CFC6300E26B0D /* SpeechManager.swift in Sources */,
+				38CBE7F42471F3AA006B835B /* DiagnosticoViewController.swift in Sources */,
 				EC42730624510AE800FB8B94 /* InicioViewController.swift in Sources */,
 				EC42730A24510E0300FB8B94 /* PerfilViewController.swift in Sources */,
 				EC42730824510DF600FB8B94 /* SistemaViewController.swift in Sources */,
