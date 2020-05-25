@@ -20,8 +20,10 @@ class DiagnosticoViewController: JSQMessagesViewController {
     
     var db: Firestore!
     var dbUsuario: [String: Any] = [:]
-    
+    var tokens: [UserToken] = []
+    var ref: DocumentReference? = nil
     var messages = [JSQMessage]()
+    let currentDate = Date()
 //    las lazy var son para que tenga un valor hasta que se use por primera vez
 //    en este caso es para definir las burbujas donde va el texto en el chat y el speaker
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
@@ -49,6 +51,13 @@ class DiagnosticoViewController: JSQMessagesViewController {
         let deadlineTime = DispatchTime.now() + .milliseconds(700);        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
             self.populateWithWelcomeMessage()
         })
+        do {
+            let data = try Data.init(contentsOf: dataFileURL())
+            tokens = try PropertyListDecoder().decode([UserToken].self, from: data)
+            //storedID = tokens.first?.userID
+        } catch {
+            print("Error al cargar los datos del archivo")
+        }
         
     }
     
@@ -84,8 +93,28 @@ class DiagnosticoViewController: JSQMessagesViewController {
     func performQuery(senderId:String,name:String,text:String)
     {
         let request = ApiAI.shared().textRequest()
+       
+
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .long
+        formatter.locale = .init(identifier: "es_ES")
+
+        // get the date time String from the date object
+        
         if text != "" {
             request?.query = text
+            if (text == "comenzar" || text == "Comenzar") {
+                ref = db.collection("users").document(tokens.first!.userID).collection("diagnosticos").addDocument(data: [
+                    "preguntas":[],
+                    "respuestas":[],
+                    "fecha": formatter.string(from: currentDate)
+                ])
+            }
+            else {
+                self.uploadMessages(message: text, origin: "User")
+            }
         } else {
             return
         }
@@ -94,10 +123,9 @@ class DiagnosticoViewController: JSQMessagesViewController {
             let response = response as! AIResponse
             if let textResponse = response.result.fulfillment.speech
             {
-                print("hola print")
+               
                 print(textResponse)
-                self.uploadMessages(message: textResponse)
-                print("adios print")
+                self.uploadMessages(message: textResponse, origin: "Bot")
                 SpeechManager.shared.speak(text: textResponse)
                 self.addMessage(withId: "BotId", name: "Bot", text: textResponse)
                 self.finishReceivingMessage()
@@ -120,13 +148,13 @@ class DiagnosticoViewController: JSQMessagesViewController {
     //mensaje por parte del usuario
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
     
     //mensaje por parte del sistema/chatbot
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleRed())
+        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     }
     
     
@@ -166,39 +194,28 @@ class DiagnosticoViewController: JSQMessagesViewController {
     }
     
     // MARK: DB
-    func uploadMessages(message: String){
-        let tokens: [UserToken]
-        var storedID:String? = ""
-        do {
-            let data = try Data.init(contentsOf: dataFileURL())
-            tokens = try PropertyListDecoder().decode([UserToken].self, from: data)
-            storedID = tokens.first?.userID
-        } catch {
-            print("Error al cargar los datos del archivo")
-        }
-        db.collection("users").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    if document.documentID == storedID {
-                        self.dbUsuario = document.data()
-                        
-                        var array = [String]()
-                        
-                        array = self.dbUsuario["messages"] as! [String]
-                        
-                        print("the array")
-                        print(array)
-                        
-                        array.append(message)
-                        
-                        self.db.collection("users").document(document.documentID).setData([ "messages": array ], merge: true)
-                        
-                    }
+    func uploadMessages(message: String, origin: String){
+        
+        var document = db.collection("users").document(tokens.first!.userID).collection("diagnosticos").document(self.ref!.documentID)
+        
+        document.getDocument { (document, error) in
+            if let document = document, document.exists {
+                self.dbUsuario = document.data()!
+                var array = [String]()
+                
+                if origin == "Bot" {
+                    array = self.dbUsuario["preguntas"] as! [String]
+                    array.append(message)
+                    self.db.collection("users").document(self.tokens.first!.userID).collection("diagnosticos").document(document.documentID).setData([ "preguntas": array ], merge: true)
                 }
-                
-                
+                else {
+                    array = self.dbUsuario["respuestas"] as! [String]
+                    array.append(message)
+                    self.db.collection("users").document(self.tokens.first!.userID).collection("diagnosticos").document(document.documentID).setData([ "respuestas": array ], merge: true)
+                }
+                        
+            } else {
+                print("Document does not exist")
             }
         }
     }

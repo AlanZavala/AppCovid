@@ -17,8 +17,8 @@ struct Diagnos {
     var date: Date
 }
 
-class Diagno_sticoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloUsuario {
-    
+class UserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloUsuario {
+    var tokens: [UserToken] = []
     var db: Firestore!
     var arregloDiagnosticos = [Diagnos]()
     let formatter = DateFormatter()
@@ -46,7 +46,7 @@ class Diagno_sticoViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func checkUsuario() {
-        let tokens: [UserToken]
+        
         var storedID:String? = ""
         do {
             let data = try Data.init(contentsOf: dataFileURL())
@@ -82,21 +82,26 @@ class Diagno_sticoViewController: UIViewController, UITableViewDelegate, UITable
     func registerUser(newUsername: String) {
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
+       
         ref = db.collection("users").addDocument(data: [
             "nombre": newUsername,
-            "diagnosticos": [],
+            "messages": [],
             "admin": false
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
                 print("Document added with ID: \(ref!.documentID)")
+//                ref?.collection("diagnosticos").addDocument(data: [
+//                    "preguntas":[],
+//                    "respuestas":[]
+//                ])
                 self.saveUserID(username: newUsername, userID: ref!.documentID)
                 self.checkUsuario()
             }
         }
     }
-    
+
     @IBAction func saveUserID(username: String, userID: String) {
         let token = [UserToken(username: username, userID: userID)]
         do {

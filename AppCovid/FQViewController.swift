@@ -120,7 +120,7 @@ class FQViewController: JSQMessagesViewController {
     
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
     
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
@@ -131,8 +131,10 @@ class FQViewController: JSQMessagesViewController {
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item] // 1
         if message.senderId == senderId { // 2
+            
             return outgoingBubbleImageView
         } else { // 3
+            
             return incomingBubbleImageView
         }
     }
