@@ -9,11 +9,14 @@
 import UIKit
 
 class Diagnosticos: NSObject {
-    
-    var date: Date!
-    
-    init(date: Date) {
-        self.date = date
+
+    var preguntas = [String]()
+    var respuestas = [String]()
+    var fecha: String!
+    init(preguntas: [String], respuestas: [String], fecha: String) {
+        self.preguntas = preguntas
+        self.respuestas = respuestas
+        self.fecha = fecha
     }
 
 }

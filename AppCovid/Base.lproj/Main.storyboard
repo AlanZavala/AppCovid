@@ -132,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89n-bo-5fp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2052" y="-666.11694152923542"/>
+            <point key="canvasLocation" x="2186" y="-1057"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Q2F-kb-vEC">
@@ -183,6 +183,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="318" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Pu1-Al-7bO" kind="show" identifier="resultDiagnostico" id="eqd-45-H0n"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -226,6 +229,7 @@
                     <navigationItem key="navigationItem" id="bmI-UP-8Ed"/>
                     <connections>
                         <outlet property="lblUsername" destination="gvH-i9-XAp" id="KeW-6h-1vt"/>
+                        <outlet property="tableView" destination="jkV-FW-ior" id="U6V-rx-MWv"/>
                         <segue destination="ep6-Cx-6Ms" kind="presentation" identifier="callRegistro" id="Vnr-cx-ZE5"/>
                         <segue destination="SmP-ce-VUS" kind="show" identifier="doctorLogin" id="oZK-i7-2U6"/>
                     </connections>
@@ -270,7 +274,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUl-Yj-iUx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2048.8000000000002" y="35.532233883058474"/>
+            <point key="canvasLocation" x="2447" y="-317"/>
+        </scene>
+        <!--Resultado Diagnostico View Controller-->
+        <scene sceneID="Ugg-nh-5QZ">
+            <objects>
+                <viewController id="Pu1-Al-7bO" customClass="ResultadoDiagnosticoViewController" customModule="AppCovid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hGV-dA-KXm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Vlk-gT-0LC"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="872-m5-ABi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pMq-RY-5LW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2265" y="410"/>
         </scene>
     </scenes>
     <resources>

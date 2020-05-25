@@ -1,8 +1,8 @@
 //
-//  DiagnosticoViewController.swift
+//  ResultadoDiagnosticoViewController.swift
 //  AppCovid
 //
-//  Created by Alan Zavala on 19/04/20.
+//  Created by Alan Zavala on 25/05/20.
 //  Copyright © 2020 Alan Zavala. All rights reserved.
 //
 
@@ -16,7 +16,7 @@ import FirebaseFirestore
 
 
 
-class DiagnosticoViewController: JSQMessagesViewController {
+class ResultadoDiagnosticoViewController: JSQMessagesViewController {
     
     var db: Firestore!
     var dbUsuario: [String: Any] = [:]
@@ -24,6 +24,7 @@ class DiagnosticoViewController: JSQMessagesViewController {
     var ref: DocumentReference? = nil
     var messages = [JSQMessage]()
     let currentDate = Date()
+    var resultado : Diagnosticos!
 //    las lazy var son para que tenga un valor hasta que se use por primera vez
 //    en este caso es para definir las burbujas donde va el texto en el chat y el speaker
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
@@ -34,23 +35,21 @@ class DiagnosticoViewController: JSQMessagesViewController {
     override func viewDidLoad()
     {
         let settings = FirestoreSettings()
-       Firestore.firestore().settings = settings
-       // [END setup]
-       db = Firestore.firestore()
+        Firestore.firestore().settings = settings
+        // [END setup]
+        db = Firestore.firestore()
         
         
         super.viewDidLoad()
+        title = "Resultados de diagnóstico"
         self.senderId = "Id"
         self.senderDisplayName = "Alan"
-        self.inputToolbar.contentView.leftBarButtonItem = nil
+        self.inputToolbar.contentView.isHidden = true
         // Coloca los mensajes del chatbot pegados a la izquierda (cuando no hay un avatar, si lo hay, se descomentan estas lineas)
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        
-//        Mensaje de bienvenido con retraso para que se vea más natural
-        let deadlineTime = DispatchTime.now() + .milliseconds(700);        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
-            self.populateWithWelcomeMessage()
-        })
+        setResults()
+
         do {
             let data = try Data.init(contentsOf: dataFileURL())
             tokens = try PropertyListDecoder().decode([UserToken].self, from: data)
@@ -68,14 +67,6 @@ class DiagnosticoViewController: JSQMessagesViewController {
     
     //MARK: Helper Methods
     
-    func populateWithWelcomeMessage()
-    {
-        self.addMessage(withId: "BotId", name: "Bot", text: "Buen día, en este apartado puedes realizar un diagnóstico que te ayude a detectar si tienes síntomas e indicios de COVID-19")
-        self.finishReceivingMessage()
-        self.addMessage(withId: "BotId", name: "Bot", text: "Para empezar el diagnóstico, escribe: comenzar")
-        self.finishReceivingMessage()
-    }
-    
 //    se agrega mensaje al array de mensajes y con esto a la colección de mensajes
     private func addMessage(withId id: String, name: String, text: String) {
         if let message = JSQMessage(senderId: id, displayName: name, text: text) {
@@ -90,51 +81,48 @@ class DiagnosticoViewController: JSQMessagesViewController {
     //MARK: Gesture Handler Methods
     
     //MARK: Core Functionality
-    func performQuery(senderId:String,name:String,text:String)
-    {
-        let request = ApiAI.shared().textRequest()
-       
-
-        // initialize the date formatter and set the style
-        let formatter = DateFormatter()
-        formatter.timeStyle = .medium
-        formatter.dateStyle = .long
-        formatter.locale = .init(identifier: "es_ES")
-
-        // get the date time String from the date object
-        
-        if text != "" {
-            request?.query = text
-            if (text == "comenzar" || text == "Comenzar") {
-                ref = db.collection("users").document(tokens.first!.userID).collection("diagnosticos").addDocument(data: [
-                    "preguntas":[],
-                    "respuestas":[],
-                    "fecha": formatter.string(from: currentDate)
-                ])
-            }
-            else {
-                self.uploadMessages(message: text, origin: "User")
-            }
-        } else {
-            return
-        }
-        
-        request?.setMappedCompletionBlockSuccess({ (request, response) in
-            let response = response as! AIResponse
-            if let textResponse = response.result.fulfillment.speech
-            {
-               
-                print(textResponse)
-                self.uploadMessages(message: textResponse, origin: "Bot")
-                SpeechManager.shared.speak(text: textResponse)
-                self.addMessage(withId: "BotId", name: "Bot", text: textResponse)
-                self.finishReceivingMessage()
-            }
-        }, failure: { (request, error) in
-            print(error!)
-        })
-        ApiAI.shared().enqueue(request)
-    }
+//    func performQuery(senderId:String,name:String,text:String)
+//    {
+//        let request = ApiAI.shared().textRequest()
+//
+//
+//        // initialize the date formatter and set the style
+//        let formatter = DateFormatter()
+//        formatter.timeStyle = .medium
+//        formatter.dateStyle = .long
+//        formatter.locale = .init(identifier: "es_ES")
+//
+//        // get the date time String from the date object
+//
+//        if text != "" {
+//            request?.query = text
+//            if (text == "comenzar" || text == "Comenzar") {
+//                ref = db.collection("users").document(tokens.first!.userID).collection("diagnosticos").addDocument(data: [
+//                    "preguntas":[],
+//                    "respuestas":[],
+//                    "fecha": formatter.string(from: currentDate)
+//                ])
+//            }
+//        } else {
+//            return
+//        }
+//
+//        request?.setMappedCompletionBlockSuccess({ (request, response) in
+//            let response = response as! AIResponse
+//            if let textResponse = response.result.fulfillment.speech
+//            {
+//
+//                print(textResponse)
+//
+//                SpeechManager.shared.speak(text: textResponse)
+//                self.addMessage(withId: "BotId", name: "Bot", text: textResponse)
+//                self.finishReceivingMessage()
+//            }
+//        }, failure: { (request, error) in
+//            print(error!)
+//        })
+//        ApiAI.shared().enqueue(request)
+//    }
     
     //MARK: JSQMessageViewController Methods
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -183,42 +171,15 @@ class DiagnosticoViewController: JSQMessagesViewController {
     }
     
     //manda el mensaje el usuario
-    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        
-        addMessage(withId: senderId, name: senderDisplayName!, text: text!)
-        JSQSystemSoundPlayer.jsq_playMessageSentSound()
-        
-        finishSendingMessage()
-        performQuery(senderId: senderId, name: senderDisplayName, text: text!)
-        
-    }
-    
-    // MARK: DB
-    func uploadMessages(message: String, origin: String){
-        
-        let document = db.collection("users").document(tokens.first!.userID).collection("diagnosticos").document(self.ref!.documentID)
-        
-        document.getDocument { (document, error) in
-            if let document = document, document.exists {
-                self.dbUsuario = document.data()!
-                var array = [String]()
-                
-                if origin == "Bot" {
-                    array = self.dbUsuario["preguntas"] as! [String]
-                    array.append(message)
-                    self.db.collection("users").document(self.tokens.first!.userID).collection("diagnosticos").document(document.documentID).setData([ "preguntas": array ], merge: true)
-                }
-                else {
-                    array = self.dbUsuario["respuestas"] as! [String]
-                    array.append(message)
-                    self.db.collection("users").document(self.tokens.first!.userID).collection("diagnosticos").document(document.documentID).setData([ "respuestas": array ], merge: true)
-                }
-                        
-            } else {
-                print("Document does not exist")
-            }
-        }
-    }
+//    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+//
+//        addMessage(withId: senderId, name: senderDisplayName!, text: text!)
+//        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+//
+//        finishSendingMessage()
+//        //performQuery(senderId: senderId, name: senderDisplayName, text: text!)
+//
+//    }
     
     func dataFileURL() -> URL {
         let url = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -227,4 +188,25 @@ class DiagnosticoViewController: JSQMessagesViewController {
         return pathArchivo
     }
 
+    func setResults() {
+//        for i in 0...resultado.preguntas.count-1 {
+//            self.addMessage(withId: "BotId", name: "Bot", text: resultado.preguntas[i])
+//            self.finishReceivingMessage()
+//        }
+        var i = 0
+        while i < resultado.preguntas.count || i < resultado.respuestas.count {
+            if i < resultado.preguntas.count {
+                self.addMessage(withId: "BotId", name: "Bot", text: resultado.preguntas[i])
+                self.finishReceivingMessage()
+            }
+            if i < resultado.respuestas.count {
+                addMessage(withId: senderId, name: senderDisplayName!, text: resultado.respuestas[i])
+                self.finishReceivingMessage()
+            }
+            print("estoy en el while iterando")
+            i += 1
+        }
+    }
+
 }
+

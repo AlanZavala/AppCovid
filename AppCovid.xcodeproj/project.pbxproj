@@ -13,6 +13,7 @@
 		3826F3EE24493D5B0086DA30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3826F3ED24493D5B0086DA30 /* ViewController.swift */; };
 		3826F3F324493D5D0086DA30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3826F3F224493D5D0086DA30 /* Assets.xcassets */; };
 		3826F3F624493D5D0086DA30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3826F3F424493D5D0086DA30 /* LaunchScreen.storyboard */; };
+		386F6EF7247C7D5400EBE3BE /* ResultadoDiagnosticoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386F6EF6247C7D5400EBE3BE /* ResultadoDiagnosticoViewController.swift */; };
 		389ABE83244CFC6300E26B0D /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389ABE82244CFC6300E26B0D /* SpeechManager.swift */; };
 		38CBE7F42471F3AA006B835B /* DiagnosticoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBE7F32471F3AA006B835B /* DiagnosticoViewController.swift */; };
 		9276E1BFAEA838B301ACA3BE /* Pods_AppCovid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32779FFA6BD12C12553F66E9 /* Pods_AppCovid.framework */; };
@@ -41,6 +42,7 @@
 		3826F3F224493D5D0086DA30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3826F3F524493D5D0086DA30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3826F3F724493D5D0086DA30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		386F6EF6247C7D5400EBE3BE /* ResultadoDiagnosticoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultadoDiagnosticoViewController.swift; sourceTree = "<group>"; };
 		389ABE80244CFB1500E26B0D /* FQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FQViewController.swift; sourceTree = "<group>"; };
 		389ABE82244CFC6300E26B0D /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
 		38CBE7F32471F3AA006B835B /* DiagnosticoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticoViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				3826F3ED24493D5B0086DA30 /* ViewController.swift */,
 				389ABE82244CFC6300E26B0D /* SpeechManager.swift */,
 				3826F3EF24493D5B0086DA30 /* Main.storyboard */,
+				386F6EF6247C7D5400EBE3BE /* ResultadoDiagnosticoViewController.swift */,
 				38CBE7F32471F3AA006B835B /* DiagnosticoViewController.swift */,
 				AE02C62C246A55E9005F4A73 /* DoctorViewController.swift */,
 				AEBE9FC12457BAA800388269 /* UserToken.swift */,
@@ -255,6 +258,7 @@
 				EC42730A24510E0300FB8B94 /* PerfilViewController.swift in Sources */,
 				EC42730824510DF600FB8B94 /* SistemaViewController.swift in Sources */,
 				AEBE9FBE2457A27900388269 /* RegistrationViewController.swift in Sources */,
+				386F6EF7247C7D5400EBE3BE /* ResultadoDiagnosticoViewController.swift in Sources */,
 				3826F3EA24493D5B0086DA30 /* AppDelegate.swift in Sources */,
 				EC4273042451024100FB8B94 /* MainController.swift in Sources */,
 				AE02C62D246A55E9005F4A73 /* DoctorViewController.swift in Sources */,

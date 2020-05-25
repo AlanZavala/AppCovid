@@ -11,18 +11,14 @@ import UIKit
 import FirebaseCore
 import FirebaseFirestore
 
-struct Diagnos {
-    var nombre: String!
-    // structure definition goes here
-    var date: Date
-}
-
 class UserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, protocoloUsuario {
     var tokens: [UserToken] = []
     var db: Firestore!
-    var arregloDiagnosticos = [Diagnos]()
+    @IBOutlet weak var tableView: UITableView!
+    var arregloDiagnosticos = [Diagnosticos]()
     let formatter = DateFormatter()
     var dbUsuario: [String: Any] = [:]
+    
     // initially set the format based on your datepicker date / server String
 //    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     @IBOutlet weak var lblUsername: UILabel!
@@ -30,14 +26,12 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let dia1 = Diagnos(nombre: "resfriado", date: Date())
-        arregloDiagnosticos += [dia1]
-        
-        // [START setup]
+        tableView.delegate = self
+        tableView.dataSource = self
+        // [START FIREBASE setup]
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
-        // [END setup]
+        // [END FIREBASE setup]
         db = Firestore.firestore()
     }
     
@@ -69,6 +63,9 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                         
                         self.lblUsername.text = self.dbUsuario["nombre"] as? String
+                        //llamar metodo para diagnosticos
+                        self.getDiagnosticos()
+                        
                     }
                 }
                 
@@ -132,9 +129,9 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "celdaDiagnóstico", for: indexPath)
         
-        cell.textLabel?.text = arregloDiagnosticos[indexPath.row].nombre
-        
-        cell.detailTextLabel?.text = arregloDiagnosticos[indexPath.row].date.description
+        cell.textLabel?.text = "Diagnóstico " + arregloDiagnosticos[indexPath.row].fecha
+//
+//        cell.detailTextLabel?.text = arregloDiagnosticos[indexPath.row].date.description
         return cell
     }
 
@@ -144,6 +141,37 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             let vistaRegistro = segue.destination as! RegistrationViewController
             vistaRegistro.delegado = self
         }
+        else if segue.identifier == "resultDiagnostico" {
+            let vistaResultados = segue.destination as! ResultadoDiagnosticoViewController
+            let indexPath = tableView.indexPathForSelectedRow!
+            vistaResultados.resultado = arregloDiagnosticos[indexPath.row]
+        }
+    }
+    
+    //  Obtener diagnosticos
+    
+    func getDiagnosticos(){
+        arregloDiagnosticos = []
+        
+        db.collection("users").document(tokens.first!.userID).collection("diagnosticos").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    
+                    self.dbUsuario = document.data()
+                    let preguntas = self.dbUsuario["preguntas"] as! [String]
+                    print("Dentro de getDiagnosticos " + preguntas[0])
+                    let respuestas = self.dbUsuario["respuestas"] as! [String]
+                    let fecha = self.dbUsuario["fecha"] as! String
+                    let diagnostico = Diagnosticos(preguntas: preguntas, respuestas: respuestas, fecha: fecha)
+                    self.arregloDiagnosticos.append(diagnostico)
+                    
+                }
+                self.tableView.reloadData()
+            }
+        }
+        
     }
 
 }
