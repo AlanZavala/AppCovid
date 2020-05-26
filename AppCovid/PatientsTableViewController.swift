@@ -53,14 +53,13 @@ class PatientsTableViewController: UITableViewController {
             } else {
                 for document in querySnapshot!.documents {
                     self.dbUsuario = document.data()
-                    
                     let isAdmin = self.dbUsuario["admin"] as? Bool
-                    
                     if (!isAdmin!){
                         let name = self.dbUsuario["nombre"] as? String
-                        let newPacient = Paciente(name: name!)
+                        print("El nombre es \(name!)" )
                         var tempDiagnosticos = [Diagnosticos]()
-                        self.db.collection("users").document(document.documentID).collection("diagnosticos").getDocuments() { (querySnapshot, err) in
+                        self.db.collection("users").document(document.documentID).collection("diagnosticos").getDocuments() {
+                            (querySnapshot, err) in
                             if let err = err {
                                 print("Error getting documents: \(err)")
                             } else {
@@ -70,17 +69,40 @@ class PatientsTableViewController: UITableViewController {
                                     let respuestas = self.dbUsuario["respuestas"] as! [String]
                                     let fecha = self.dbUsuario["fecha"] as! String
                                     let diagnostico = Diagnosticos(preguntas: preguntas, respuestas: respuestas, fecha: fecha)
+                                    print("UN DIAGNOSTICO")
+                                    print(diagnostico)
                                     tempDiagnosticos.append(diagnostico)
                                 }
+                                print("FINAL INSERT")
+                                print(tempDiagnosticos)
                             }
                         }
-                        newPacient.setDiagnosticos(newDiagnosticos: tempDiagnosticos)
+                        
+                        var d = [Diagnosticos]()
+                        let d1 = Diagnosticos(preguntas: ["hola", "hola"], respuestas: ["adios", "adios"], fecha: "2020-20-20")
+                        d.append(d1)
+      
+                        print("CREATE PACIENTE")
+                        let newPacient = Paciente(name: name!, newDiagnosticos: d)
+//                        let newPacient = Paciente(name: name!, newDiagnosticos: tempDiagnosticos)
+                        print(newPacient)
                         self.arregloPacientes.append(newPacient)
                        self.tableView.reloadData()
                     }
                 }
             }
         } 
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vista = segue.destination as? DisplayPaciente
+        let indice = tableView.indexPathForSelectedRow!
+        print("esto voy a pasar")
+        print(arregloPacientes[indice.row].name!)
+        print(arregloPacientes[indice.row].diagnosticos.count)
+        arregloPacientes[indice.row].printDiagnosticos()
+        vista?.thePatient = arregloPacientes[indice.row]
     }
     
     
@@ -127,14 +149,8 @@ class PatientsTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
+    
 
 }

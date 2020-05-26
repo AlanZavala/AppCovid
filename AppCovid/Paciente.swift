@@ -13,11 +13,17 @@ class Paciente: NSObject {
     
     var diagnosticos =  [Diagnosticos]()
     
-    init(name: String) {
+    init(name: String, newDiagnosticos: [Diagnosticos]) {
         self.name = name
+        self.diagnosticos = newDiagnosticos
     }
     
     func setDiagnosticos(newDiagnosticos: [Diagnosticos]) -> Void {
         self.diagnosticos = newDiagnosticos
+    }
+    
+    func printDiagnosticos(){
+        print(diagnosticos.count)
+        print(diagnosticos)
     }
 }

@@ -30,6 +30,8 @@
 		EC42730E2451219000FB8B94 /* Diagnostico.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730D2451219000FB8B94 /* Diagnostico.swift */; };
 		ECD4EE3D247C9E65004D086E /* PatientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4EE3C247C9E65004D086E /* PatientsTableViewController.swift */; };
 		ECD4EE3F247C9F8C004D086E /* Paciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4EE3E247C9F8C004D086E /* Paciente.swift */; };
+		ECD4EE41247CAF8C004D086E /* DisplayPaciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4EE40247CAF8C004D086E /* DisplayPaciente.swift */; };
+		ECD4EE43247CC63B004D086E /* AllDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4EE42247CC63B004D086E /* AllDiagnostics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		EC42730D2451219000FB8B94 /* Diagnostico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnostico.swift; sourceTree = "<group>"; };
 		ECD4EE3C247C9E65004D086E /* PatientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsTableViewController.swift; sourceTree = "<group>"; };
 		ECD4EE3E247C9F8C004D086E /* Paciente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paciente.swift; sourceTree = "<group>"; };
+		ECD4EE40247CAF8C004D086E /* DisplayPaciente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayPaciente.swift; sourceTree = "<group>"; };
+		ECD4EE42247CC63B004D086E /* AllDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDiagnostics.swift; sourceTree = "<group>"; };
 		F316497379FFA4726E377118 /* Pods-AppCovid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppCovid.debug.xcconfig"; path = "Target Support Files/Pods-AppCovid/Pods-AppCovid.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +113,8 @@
 				3826F3ED24493D5B0086DA30 /* ViewController.swift */,
 				389ABE82244CFC6300E26B0D /* SpeechManager.swift */,
 				3826F3EF24493D5B0086DA30 /* Main.storyboard */,
+				ECD4EE42247CC63B004D086E /* AllDiagnostics.swift */,
+				ECD4EE40247CAF8C004D086E /* DisplayPaciente.swift */,
 				ECD4EE3E247C9F8C004D086E /* Paciente.swift */,
 				ECD4EE3C247C9E65004D086E /* PatientsTableViewController.swift */,
 				386F6EF6247C7D5400EBE3BE /* ResultadoDiagnosticoViewController.swift */,
@@ -263,6 +269,7 @@
 				EC42730624510AE800FB8B94 /* InicioViewController.swift in Sources */,
 				EC42730A24510E0300FB8B94 /* PerfilViewController.swift in Sources */,
 				EC42730824510DF600FB8B94 /* SistemaViewController.swift in Sources */,
+				ECD4EE41247CAF8C004D086E /* DisplayPaciente.swift in Sources */,
 				AEBE9FBE2457A27900388269 /* RegistrationViewController.swift in Sources */,
 				386F6EF7247C7D5400EBE3BE /* ResultadoDiagnosticoViewController.swift in Sources */,
 				3826F3EA24493D5B0086DA30 /* AppDelegate.swift in Sources */,
@@ -270,6 +277,7 @@
 				ECD4EE3F247C9F8C004D086E /* Paciente.swift in Sources */,
 				AE02C62D246A55E9005F4A73 /* DoctorViewController.swift in Sources */,
 				ECD4EE3D247C9E65004D086E /* PatientsTableViewController.swift in Sources */,
+				ECD4EE43247CC63B004D086E /* AllDiagnostics.swift in Sources */,
 				3826F3EC24493D5B0086DA30 /* SceneDelegate.swift in Sources */,
 				EC42730E2451219000FB8B94 /* Diagnostico.swift in Sources */,
 				AEBE9FC22457BAA800388269 /* UserToken.swift in Sources */,
