@@ -28,6 +28,8 @@
 		EC42730824510DF600FB8B94 /* SistemaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730724510DF600FB8B94 /* SistemaViewController.swift */; };
 		EC42730A24510E0300FB8B94 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730924510E0300FB8B94 /* PerfilViewController.swift */; };
 		EC42730E2451219000FB8B94 /* Diagnostico.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC42730D2451219000FB8B94 /* Diagnostico.swift */; };
+		ECD4EE3D247C9E65004D086E /* PatientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4EE3C247C9E65004D086E /* PatientsTableViewController.swift */; };
+		ECD4EE3F247C9F8C004D086E /* Paciente.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4EE3E247C9F8C004D086E /* Paciente.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		EC42730724510DF600FB8B94 /* SistemaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SistemaViewController.swift; sourceTree = "<group>"; };
 		EC42730924510E0300FB8B94 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		EC42730D2451219000FB8B94 /* Diagnostico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnostico.swift; sourceTree = "<group>"; };
+		ECD4EE3C247C9E65004D086E /* PatientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsTableViewController.swift; sourceTree = "<group>"; };
+		ECD4EE3E247C9F8C004D086E /* Paciente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paciente.swift; sourceTree = "<group>"; };
 		F316497379FFA4726E377118 /* Pods-AppCovid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppCovid.debug.xcconfig"; path = "Target Support Files/Pods-AppCovid/Pods-AppCovid.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +109,8 @@
 				3826F3ED24493D5B0086DA30 /* ViewController.swift */,
 				389ABE82244CFC6300E26B0D /* SpeechManager.swift */,
 				3826F3EF24493D5B0086DA30 /* Main.storyboard */,
+				ECD4EE3E247C9F8C004D086E /* Paciente.swift */,
+				ECD4EE3C247C9E65004D086E /* PatientsTableViewController.swift */,
 				386F6EF6247C7D5400EBE3BE /* ResultadoDiagnosticoViewController.swift */,
 				38CBE7F32471F3AA006B835B /* DiagnosticoViewController.swift */,
 				AE02C62C246A55E9005F4A73 /* DoctorViewController.swift */,
@@ -261,7 +267,9 @@
 				386F6EF7247C7D5400EBE3BE /* ResultadoDiagnosticoViewController.swift in Sources */,
 				3826F3EA24493D5B0086DA30 /* AppDelegate.swift in Sources */,
 				EC4273042451024100FB8B94 /* MainController.swift in Sources */,
+				ECD4EE3F247C9F8C004D086E /* Paciente.swift in Sources */,
 				AE02C62D246A55E9005F4A73 /* DoctorViewController.swift in Sources */,
+				ECD4EE3D247C9E65004D086E /* PatientsTableViewController.swift in Sources */,
 				3826F3EC24493D5B0086DA30 /* SceneDelegate.swift in Sources */,
 				EC42730E2451219000FB8B94 /* Diagnostico.swift in Sources */,
 				AEBE9FC22457BAA800388269 /* UserToken.swift in Sources */,

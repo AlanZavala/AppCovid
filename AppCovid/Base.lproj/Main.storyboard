@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bQG-rZ-A38">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bQG-rZ-A38">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLw-6a-FHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1144.8" y="811.84407796101959"/>
+            <point key="canvasLocation" x="-375" y="782"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="h6v-ri-68X">
@@ -50,7 +50,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9v-TM-qhk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="37"/>
+            <point key="canvasLocation" x="-374" y="5"/>
         </scene>
         <!--Diagnostico View Controller-->
         <scene sceneID="Omo-OK-kmX">
@@ -65,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QGa-30-rMv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1698" y="-1736"/>
+            <point key="canvasLocation" x="1638" y="-834"/>
         </scene>
         <!--Diagnostico-->
         <scene sceneID="0sY-l0-tSa">
@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swz-5d-12I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1144.8" y="-777.66116941529242"/>
+            <point key="canvasLocation" x="652" y="-833"/>
         </scene>
         <!--Doctor View Controller-->
         <scene sceneID="ehx-Ii-P7y">
@@ -123,6 +123,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Pacientes"/>
+                                <connections>
+                                    <segue destination="uyR-ai-sWM" kind="show" identifier="pacienteSegue" id="3ZY-PG-YJh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -132,7 +135,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89n-bo-5fp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2186" y="-1057"/>
+            <point key="canvasLocation" x="1638" y="134"/>
+        </scene>
+        <!--Patients Table View Controller-->
+        <scene sceneID="vlH-lq-5Ea">
+            <objects>
+                <tableViewController id="hXi-1X-Thc" customClass="PatientsTableViewController" customModule="AppCovid" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bvC-4r-1HU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pacienteCelda" id="jh3-1Z-7Ep" customClass="pacienteCelda">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jh3-1Z-7Ep" id="1xq-m5-8KM">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hXi-1X-Thc" id="Dcg-KM-5ac"/>
+                            <outlet property="delegate" destination="hXi-1X-Thc" id="nY6-hR-E9U"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="gHE-YT-eE9"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ijA-Jt-nSE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3255" y="134"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Q2F-kb-vEC">
@@ -147,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pst-ba-dL6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="1527"/>
+            <point key="canvasLocation" x="-375" y="1522"/>
         </scene>
         <!--Usuario-->
         <scene sceneID="QZh-GX-o1W">
@@ -236,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vLa-92-fgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1144.8" y="36.431784107946029"/>
+            <point key="canvasLocation" x="777" y="134"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="odi-Q9-MjN">
@@ -274,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUl-Yj-iUx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2447" y="-317"/>
+            <point key="canvasLocation" x="1958" y="1111"/>
         </scene>
         <!--Resultado Diagnostico View Controller-->
         <scene sceneID="Ugg-nh-5QZ">
@@ -290,12 +322,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMq-RY-5LW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2265" y="410"/>
+            <point key="canvasLocation" x="826" y="1110"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fny-Tx-dOV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uyR-ai-sWM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="cfF-Zu-eXQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AVW-fQ-0Wg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hXi-1X-Thc" kind="relationship" relationship="rootViewController" id="GZV-mF-eMa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3oX-1u-pge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2425" y="134"/>
         </scene>
     </scenes>
     <resources>
-        <image name="bubble.right.fill" catalog="system" width="128" height="110"/>
-        <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="bubble.right.fill" catalog="system" width="64" height="54"/>
+        <image name="person.crop.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="questionmark.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>
