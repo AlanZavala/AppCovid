@@ -48,6 +48,8 @@ class PatientsTableViewController: UITableViewController {
         
         cell.layer.cornerRadius = 10
         
+        cell.imageView?.image = UIImage(named: "usuario")
+        
         if indexPath.row % 2 == 1 {
             cell.backgroundColor = UIColor.link
             cell.textLabel?.textColor = UIColor.white

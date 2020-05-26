@@ -63,6 +63,7 @@ class AllDiagnostics: UITableViewController {
         
         cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 10
+        cell.imageView?.image = UIImage(named: "farmacia")
         cell.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
         if indexPath.row % 2 == 1 {
             cell.backgroundColor = UIColor.green

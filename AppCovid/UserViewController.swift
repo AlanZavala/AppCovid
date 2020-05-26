@@ -135,7 +135,8 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "celdaDiagnóstico", for: indexPath)
         
-        cell.textLabel?.text = "Diagnóstico " + arregloDiagnosticos[indexPath.row].fecha
+        cell.textLabel?.text = arregloDiagnosticos[indexPath.row].fecha
+        cell.imageView?.image = UIImage(named: "farmacia")
         
         cell.accessoryType = .disclosureIndicator
         
