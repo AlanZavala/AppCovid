@@ -20,9 +20,16 @@ class AllDiagnostics: UITableViewController {
     var dbUsuario: [String: Any] = [:]
      var tokens: [UserToken] = []
 
+    @IBOutlet weak var navigationIme: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        title="All diagnostics"
+        title="DIAGNÓSTICOS"
+        
+//        navigationIme
+//        UINavigationBar.appearance().backgroundColor = UIColor.green
+//        UINavigationItem.appearance().tintColor = UIColor.green
+//        UINavigationItem.
+
         
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
@@ -31,6 +38,11 @@ class AllDiagnostics: UITableViewController {
         
         getDiagnosticos()
     }
+    
+    func superViewDidLoad () {
+        self.navigationController?.navigationBar.barTintColor = UIColor.red;
+    }
+
 
     // MARK: - Table view data source
 
@@ -47,6 +59,14 @@ class AllDiagnostics: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "allDiagnosticsCell", for: indexPath)
         cell.textLabel?.text = arregloNombres[indexPath.row]
         cell.detailTextLabel?.text = arregloDiagnosticos[indexPath.row].fecha
+        cell.accessoryType = .disclosureIndicator
+        
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 10
+        cell.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        if indexPath.row % 2 == 1 {
+            cell.backgroundColor = UIColor.green
+        }
         return cell
     }
     
@@ -57,9 +77,8 @@ class AllDiagnostics: UITableViewController {
                 } else {
                     for document in querySnapshot!.documents {
                         self.dbUsuario = document.data()
-                        let isAdmin = self.dbUsuario["admin"] as? Bool
-                        if (!isAdmin!){
                             let name = self.dbUsuario["nombre"] as? String
+                            print("El numero  de documentos es \(document.documentID)")
                             self.db.collection("users").document(document.documentID).collection("diagnosticos").getDocuments() {
                                 (querySnapshot, err) in
                                 if let err = err {
@@ -78,8 +97,6 @@ class AllDiagnostics: UITableViewController {
                                     }
                                 }
                             }
-//                           self.tableView.reloadData()
-                        }
                     }
                 }
             }

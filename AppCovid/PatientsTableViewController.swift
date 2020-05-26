@@ -20,7 +20,7 @@ class PatientsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Pacientes"
+        title = "PACIENTES"
         let settings = FirestoreSettings()
         Firestore.firestore().settings = settings
         // [END FIREBASE setup]
@@ -41,9 +41,19 @@ class PatientsTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "pacienteCelda", for: indexPath)
         cell.textLabel?.text = arregloPacientes[indexPath.row].name
+        cell.accessoryType = .disclosureIndicator
+        
+        cell.layer.cornerRadius = 10
+        
+        if indexPath.row % 2 == 1 {
+            cell.backgroundColor = UIColor.link
+            cell.textLabel?.textColor = UIColor.white
+        } 
         return cell
+        
     }
     
     func getPacientes() {
@@ -53,8 +63,7 @@ class PatientsTableViewController: UITableViewController {
             } else {
                 for document in querySnapshot!.documents {
                     self.dbUsuario = document.data()
-                    let isAdmin = self.dbUsuario["admin"] as? Bool
-                    if (!isAdmin!){
+                    
                         let name = self.dbUsuario["nombre"] as? String
                         print("El nombre es \(name!)" )
                         var tempDiagnosticos = [Diagnosticos]()
@@ -88,7 +97,6 @@ class PatientsTableViewController: UITableViewController {
                         print(newPacient)
                         self.arregloPacientes.append(newPacient)
                        self.tableView.reloadData()
-                    }
                 }
             }
         } 

@@ -23,6 +23,8 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
 //    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     @IBOutlet weak var lblUsername: UILabel!
     
+    var theName: String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,11 +60,15 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if document.documentID == storedID {
                         self.dbUsuario = document.data()
                         
+                        self.lblUsername.text = self.dbUsuario["nombre"] as? String
+                        self.theName = self.lblUsername.text
+                        
                         if self.dbUsuario["admin"] as? Bool == true {
                             self.performSegue(withIdentifier: "doctorLogin", sender: self)
                         }
                         
                         self.lblUsername.text = self.dbUsuario["nombre"] as? String
+                        self.theName = self.lblUsername.text
                         //llamar metodo para diagnosticos
                         self.getDiagnosticos()
                         
@@ -130,6 +136,17 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "celdaDiagnóstico", for: indexPath)
         
         cell.textLabel?.text = "Diagnóstico " + arregloDiagnosticos[indexPath.row].fecha
+        
+        cell.accessoryType = .disclosureIndicator
+        
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 10
+        cell.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+    
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor.green
+            cell.textLabel?.textColor = UIColor.black
+        }
 //
 //        cell.detailTextLabel?.text = arregloDiagnosticos[indexPath.row].date.description
         return cell
@@ -140,11 +157,15 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "callRegistro" {
             let vistaRegistro = segue.destination as! RegistrationViewController
             vistaRegistro.delegado = self
+            
         }
         else if segue.identifier == "resultDiagnostico" {
             let vistaResultados = segue.destination as! ResultadoDiagnosticoViewController
             let indexPath = tableView.indexPathForSelectedRow!
             vistaResultados.resultado = arregloDiagnosticos[indexPath.row]
+        } else if segue.identifier == "doctorLogin" {
+            let doctorView = segue.destination as! DoctorViewController
+            doctorView.valueName = theName
         }
     }
     

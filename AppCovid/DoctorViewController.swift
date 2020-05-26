@@ -9,10 +9,13 @@
 import UIKit
 
 class DoctorViewController: UIViewController {
+        
+    @IBOutlet weak var theName: UILabel!
+    var valueName: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        theName.text = valueName
         // Do any additional setup after loading the view.
     }
     

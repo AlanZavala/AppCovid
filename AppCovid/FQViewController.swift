@@ -149,7 +149,7 @@ class FQViewController: JSQMessagesViewController {
         let message = messages[indexPath.item]
         
         if message.senderId == senderId {
-            cell.textView?.textColor = UIColor.white
+            cell.textView?.textColor = UIColor.black
             
         } else {
             

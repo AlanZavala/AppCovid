@@ -38,6 +38,12 @@ class DisplayPaciente: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pacienteCelda", for: indexPath)
         cell.textLabel?.text = "Diagnóstico " + arregloDiagnosticos[indexPath.row].fecha
+        cell.accessoryType = .disclosureIndicator
+//        cell.backgroundColor = UIColor.link
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 10
+        cell.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 255, alpha: 1)
+            
         return cell
     }
     
