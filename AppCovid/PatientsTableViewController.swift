@@ -14,6 +14,9 @@ class PatientsTableViewController: UITableViewController {
     
     var arregloPacientes = [Paciente]()
     
+    var arregloDiagnosticos = [Diagnosticos]()
+     var arregloNombres = [String]()
+    
     var db: Firestore!
     var dbUsuario: [String: Any] = [:]
      var tokens: [UserToken] = []
@@ -26,7 +29,15 @@ class PatientsTableViewController: UITableViewController {
         // [END FIREBASE setup]
         db = Firestore.firestore()
         
-        getPacientes()
+//        getPacientes()
+        getDiagnosticos()
+        
+        
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+         orderPacientes()
     }
 
     // MARK: - Table view data source
@@ -57,6 +68,94 @@ class PatientsTableViewController: UITableViewController {
         return cell
         
     }
+    
+    func find(value searchValue: String, in array: [Paciente]) -> Int {
+        
+        for (index, value) in array.enumerated()
+        {
+            if value.name == searchValue {
+                print("lo encontre")
+                print(value.name)
+                print(searchValue)
+                return index
+            }
+        }
+        return -1
+    }
+    
+    func orderPacientes(){
+        
+        
+        
+        print("orderPacitente")
+        
+        print(arregloDiagnosticos)
+        print(arregloNombres)
+        arregloPacientes.removeAll()
+            var newPatient: Paciente
+            for i in 1 ..< arregloNombres.count {
+                print("DEBUG")
+                let index: Int = find(value: arregloNombres[i], in: arregloPacientes)
+                print("index is: ")
+                print(index)
+                if (index == -1) {
+                    newPatient = Paciente(name: arregloNombres[i], newDiagnosticos: [arregloDiagnosticos[i]])
+                    arregloPacientes.append(newPatient)
+                }else {
+                    var tempDiagnosticos = arregloPacientes[index].diagnosticos
+                    tempDiagnosticos.append(arregloDiagnosticos[i])
+                    newPatient = Paciente(name: arregloNombres[index], newDiagnosticos: tempDiagnosticos)
+                    arregloPacientes[index] = newPatient
+
+                }
+            }
+            print("EL ARREGLO DE PACIENTES ES: ")
+            print(arregloPacientes.count)
+            self.tableView.reloadData()
+        
+        print("YEAH")
+        
+    }
+    
+    func getDiagnosticos() {
+        arregloDiagnosticos.removeAll()
+        arregloNombres.removeAll()
+         print("getDiagnosticso")
+        db.collection("users").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.dbUsuario = document.data()
+                        let name = self.dbUsuario["nombre"] as? String
+                        print("El numero  de documentos es \(document.documentID)")
+                        self.db.collection("users").document(document.documentID).collection("diagnosticos").getDocuments() {
+                            (querySnapshot, err) in
+                            if let err = err {
+                                print("Error getting documents: \(err)")
+                            } else {
+                                for diag in querySnapshot!.documents {
+                                    self.dbUsuario = diag.data()
+                                    let preguntas = self.dbUsuario["preguntas"] as! [String]
+                                    let respuestas = self.dbUsuario["respuestas"] as! [String]
+                                    let fecha = self.dbUsuario["fecha"] as! String
+                                    let diagnostico = Diagnosticos(preguntas: preguntas, respuestas: respuestas, fecha: fecha)
+                                    print(diagnostico)
+                                    self.arregloDiagnosticos.append(diagnostico)
+                                    self.arregloNombres.append(name!)
+                                    print("ARREGLOS DIAGNOSTICOS")
+                                    print(self.arregloDiagnosticos)
+                                    print("ARREGLO NOMBRES")
+                                    print(self.arregloNombres)
+//                                    self.tableView.reloadData()
+                                }
+                            }
+                        }
+                }
+            }
+        }
+    }
+    
     
     func getPacientes() {
         db.collection("users").getDocuments() { (querySnapshot, err) in
