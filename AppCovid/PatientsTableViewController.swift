@@ -71,56 +71,62 @@ class PatientsTableViewController: UITableViewController {
     
     func find(value searchValue: String, in array: [Paciente]) -> Int {
         
+        print("VOY A BUSCAR \(searchValue)")
+        
         for (index, value) in array.enumerated()
         {
+            print(value.name!)
             if value.name == searchValue {
                 print("lo encontre")
-                print(value.name)
-                print(searchValue)
+//                print(value.name!)
+//                print(searchValue)
                 return index
             }
         }
+        print("no lo encontre")
         return -1
     }
     
     func orderPacientes(){
-        
-        
-        
-        print("orderPacitente")
-        
-        print(arregloDiagnosticos)
-        print(arregloNombres)
+       
+//        print("orderPacitente")
+//
+//        print(arregloDiagnosticos)
+//        print(arregloNombres)
         arregloPacientes.removeAll()
             var newPatient: Paciente
             for i in 1 ..< arregloNombres.count {
-                print("DEBUG")
+//                print("DEBUG")
                 let index: Int = find(value: arregloNombres[i], in: arregloPacientes)
-                print("index is: ")
-                print(index)
+//                print("index is: ")
+                print("index is \(index)")
                 if (index == -1) {
+                    print("Es nuevo")
                     newPatient = Paciente(name: arregloNombres[i], newDiagnosticos: [arregloDiagnosticos[i]])
                     arregloPacientes.append(newPatient)
                 }else {
+                    
                     var tempDiagnosticos = arregloPacientes[index].diagnosticos
                     tempDiagnosticos.append(arregloDiagnosticos[i])
-                    newPatient = Paciente(name: arregloNombres[index], newDiagnosticos: tempDiagnosticos)
+                    print("este el nombre appren \(arregloNombres[index])")
+                    newPatient = Paciente(name: arregloNombres[i], newDiagnosticos: tempDiagnosticos)
                     arregloPacientes[index] = newPatient
+                    print("APPEND")
 
                 }
             }
-            print("EL ARREGLO DE PACIENTES ES: ")
-            print(arregloPacientes.count)
+//            print("EL ARREGLO DE PACIENTES ES: ")
+//            print(arregloPacientes.count)
             self.tableView.reloadData()
         
-        print("YEAH")
+//        print("YEAH")
         
     }
     
     func getDiagnosticos() {
         arregloDiagnosticos.removeAll()
         arregloNombres.removeAll()
-         print("getDiagnosticso")
+//         print("getDiagnosticso")
         db.collection("users").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -128,7 +134,7 @@ class PatientsTableViewController: UITableViewController {
                 for document in querySnapshot!.documents {
                     self.dbUsuario = document.data()
                         let name = self.dbUsuario["nombre"] as? String
-                        print("El numero  de documentos es \(document.documentID)")
+//                        print("El numero  de documentos es \(document.documentID)")
                         self.db.collection("users").document(document.documentID).collection("diagnosticos").getDocuments() {
                             (querySnapshot, err) in
                             if let err = err {
@@ -140,14 +146,13 @@ class PatientsTableViewController: UITableViewController {
                                     let respuestas = self.dbUsuario["respuestas"] as! [String]
                                     let fecha = self.dbUsuario["fecha"] as! String
                                     let diagnostico = Diagnosticos(preguntas: preguntas, respuestas: respuestas, fecha: fecha)
-                                    print(diagnostico)
+//                                    print(diagnostico)
                                     self.arregloDiagnosticos.append(diagnostico)
                                     self.arregloNombres.append(name!)
-                                    print("ARREGLOS DIAGNOSTICOS")
-                                    print(self.arregloDiagnosticos)
-                                    print("ARREGLO NOMBRES")
-                                    print(self.arregloNombres)
-//                                    self.tableView.reloadData()
+//                                    print("ARREGLOS DIAGNOSTICOS")
+//                                    print(self.arregloDiagnosticos)
+//                                    print("ARREGLO NOMBRES")
+//                                    print(self.arregloNombres)
                                 }
                             }
                         }

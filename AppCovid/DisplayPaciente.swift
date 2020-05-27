@@ -14,6 +14,7 @@ class DisplayPaciente: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     var arregloDiagnosticos = [Diagnosticos]()
 
+    @IBOutlet weak var lblDiagnosticos: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lbName: UILabel!
     
@@ -25,6 +26,7 @@ class DisplayPaciente: UIViewController, UITableViewDelegate, UITableViewDataSou
         lbName.text = thePatient.name
         arregloDiagnosticos = thePatient.diagnosticos
         print(thePatient.diagnosticos.count)
+        lblDiagnosticos.text = "Diagnósticos (\(arregloDiagnosticos.count))"
     }
     
      func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,7 +39,7 @@ class DisplayPaciente: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "pacienteCelda", for: indexPath)
-        cell.textLabel?.text = "Diagnóstico " + arregloDiagnosticos[indexPath.row].fecha
+        cell.textLabel?.text =  "\(indexPath.row+1)) \(arregloDiagnosticos[indexPath.row].fecha!)"
         cell.accessoryType = .disclosureIndicator
 //        cell.backgroundColor = UIColor.link
         cell.layer.borderWidth = 1

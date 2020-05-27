@@ -265,6 +265,7 @@
                     <navigationItem key="navigationItem" id="YWB-6g-UZv"/>
                     <connections>
                         <outlet property="lbName" destination="XSE-Hv-Let" id="Onq-qd-NZ8"/>
+                        <outlet property="lblDiagnosticos" destination="ybC-7r-z2q" id="APQ-Bj-y2W"/>
                         <outlet property="tableView" destination="dqW-OF-n1v" id="Cam-U9-gY9"/>
                     </connections>
                 </viewController>
@@ -521,6 +522,6 @@
         <image name="tos" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bnN-iy-CPU"/>
+        <segue reference="2Zb-JU-IMs"/>
     </inferredMetricsTieBreakers>
 </document>

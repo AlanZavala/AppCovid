@@ -97,8 +97,8 @@ class DiagnosticoViewController: JSQMessagesViewController {
 
         // initialize the date formatter and set the style
         let formatter = DateFormatter()
-        formatter.timeStyle = .medium
-        formatter.dateStyle = .long
+        formatter.timeStyle = .short
+        formatter.dateStyle = .short
         formatter.locale = .init(identifier: "es_ES")
 
         // get the date time String from the date object
