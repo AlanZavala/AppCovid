@@ -81,48 +81,7 @@ class ResultadoDiagnosticoViewController: JSQMessagesViewController {
     //MARK: Gesture Handler Methods
     
     //MARK: Core Functionality
-//    func performQuery(senderId:String,name:String,text:String)
-//    {
-//        let request = ApiAI.shared().textRequest()
-//
-//
-//        // initialize the date formatter and set the style
-//        let formatter = DateFormatter()
-//        formatter.timeStyle = .medium
-//        formatter.dateStyle = .long
-//        formatter.locale = .init(identifier: "es_ES")
-//
-//        // get the date time String from the date object
-//
-//        if text != "" {
-//            request?.query = text
-//            if (text == "comenzar" || text == "Comenzar") {
-//                ref = db.collection("users").document(tokens.first!.userID).collection("diagnosticos").addDocument(data: [
-//                    "preguntas":[],
-//                    "respuestas":[],
-//                    "fecha": formatter.string(from: currentDate)
-//                ])
-//            }
-//        } else {
-//            return
-//        }
-//
-//        request?.setMappedCompletionBlockSuccess({ (request, response) in
-//            let response = response as! AIResponse
-//            if let textResponse = response.result.fulfillment.speech
-//            {
-//
-//                print(textResponse)
-//
-//                SpeechManager.shared.speak(text: textResponse)
-//                self.addMessage(withId: "BotId", name: "Bot", text: textResponse)
-//                self.finishReceivingMessage()
-//            }
-//        }, failure: { (request, error) in
-//            print(error!)
-//        })
-//        ApiAI.shared().enqueue(request)
-//    }
+
     
     //MARK: JSQMessageViewController Methods
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {

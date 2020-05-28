@@ -22,7 +22,7 @@ class DisplayPaciente: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
+        title = "Diagnósticos"
         lbName.text = thePatient.name
         arregloDiagnosticos = thePatient.diagnosticos
         print(thePatient.diagnosticos.count)
