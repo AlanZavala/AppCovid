@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bQG-rZ-A38">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bQG-rZ-A38">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,10 +65,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="suK-2W-4r6"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="L97-ig-ITp" appends="YES" id="p3g-Sb-tSe"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QGa-30-rMv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="L97-ig-ITp">
+                    <connections>
+                        <action selector="quitarTeclado:" destination="5nQ-u3-5c3" id="iVb-XL-TKX"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1545" y="-1397"/>
         </scene>
@@ -497,6 +506,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="n4u-Jf-QiQ" firstAttribute="top" secondItem="Gox-xN-Ea6" secondAttribute="top" constant="128" id="251-Co-RZq"/>
                             <constraint firstItem="Gox-xN-Ea6" firstAttribute="trailing" secondItem="n4u-Jf-QiQ" secondAttribute="trailing" constant="32" id="5Qc-hM-MOd"/>
@@ -514,6 +524,9 @@
                             <constraint firstItem="w3j-ua-XTO" firstAttribute="leading" secondItem="Gox-xN-Ea6" secondAttribute="leading" constant="32" id="zLf-cJ-bBh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gox-xN-Ea6"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LLa-Yo-xTW" appends="YES" id="CXd-85-wmj"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="BSB-Zy-r5X"/>
                     <connections>
@@ -521,6 +534,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUl-Yj-iUx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="LLa-Yo-xTW">
+                    <connections>
+                        <action selector="quitarTeclado:" destination="ep6-Cx-6Ms" id="Ld2-HQ-bto"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="741.60000000000002" y="1132.9835082458771"/>
         </scene>
@@ -628,16 +646,16 @@
             <point key="canvasLocation" x="2562" y="274"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="2Zb-JU-IMs"/>
-    </inferredMetricsTieBreakers>
     <resources>
-        <image name="bubble.right.fill" catalog="system" width="128" height="110"/>
+        <image name="bubble.right.fill" catalog="system" width="64" height="54"/>
         <image name="grabar" width="512" height="512"/>
         <image name="iniciar-sesion" width="512" height="512"/>
         <image name="medicina" width="512" height="512"/>
-        <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="person.crop.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="questionmark.circle.fill" catalog="system" width="64" height="60"/>
         <image name="tos" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="eqd-45-H0n"/>
+    </inferredMetricsTieBreakers>
 </document>

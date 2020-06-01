@@ -33,6 +33,7 @@ class DiagnosticoViewController: JSQMessagesViewController {
     //MARK: Lifecycle Methods
     override func viewDidLoad()
     {
+        
         let settings = FirestoreSettings()
        Firestore.firestore().settings = settings
        // [END setup]
@@ -227,4 +228,7 @@ class DiagnosticoViewController: JSQMessagesViewController {
         return pathArchivo
     }
 
+    @IBAction func quitarTeclado(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
 }

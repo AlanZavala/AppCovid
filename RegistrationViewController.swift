@@ -38,5 +38,11 @@ class RegistrationViewController: UIViewController {
             navigationController?.popViewController(animated: true) 
         }
     }
-
+    
+    
+    
+    @IBAction func quitarTeclado(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
 }
